@@ -1,10 +1,10 @@
 Package: mmmVcov
 Type: Package
-Title: Benchmark dose estimation for dose-response data
+Title: Variance-covariance matrix for multiple marginal models
 Version: 0.1.0
 Author: Signe M.Jensen and Christian Ritz
 Maintainer: Signe M. Jensen <smj@plen.ku.dk>
-Description: Benchmark dose analysis for continuous and quantal dose-response data
+Description: Estimation of the joint variance-covariance matrix for multiple marginal models
 License: GPL
 Encoding: UTF-8
 LazyData: true
