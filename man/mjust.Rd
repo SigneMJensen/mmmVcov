@@ -24,7 +24,7 @@ mjust(modelList, expressions, dataused, level=0.95, seType="san")
 }
 
 \value{
-  A matrix with two column, one containing BMD and the other containing BMDL.
+  A matrix with two columns, one containing BMD and the other containing BMDL.
 }
 
 \references{
