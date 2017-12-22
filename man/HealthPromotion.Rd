@@ -1,7 +1,7 @@
 \name{HealthPromotion}
 \alias{HealthPromotion}
 \docType{data}
-\title{}
+\title{Health related measurements for university employees enrolled in a workplace health promotion program}
 \description{Data contains information on health related parameters for 1365 employees from a public university enrolled in a health promotion program at the workplace. Employees were followed for up till 6 years. The main focus was change in blood pressure over time. For more information see Eng et al. (2016).}
 \usage{data(HealthPromotion)}
 \format{
