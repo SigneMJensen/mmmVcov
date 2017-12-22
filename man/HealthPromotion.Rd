@@ -2,7 +2,7 @@
 \alias{HealthPromotion}
 \docType{data}
 \title{}
-\description{}
+\description{Data contains information on health related parameters for 1365 employees from a public university enrolled in a health promotion program at the workplace. Employees were followed for up till 6 years. The main focus was change in blood pressure over time. For more information see Eng et al. (2016).}
 \usage{data(HealthPromotion)}
 \format{
   A data frame with 4605 observations on the following 17 variables.
@@ -30,11 +30,6 @@
 Eng, J. Y., Moy, F. M., & Bulgiba, A. (2016). Impact of a workplace health promotion program on employees' blood pressure in a public university. PloS one, 11(2), e0148307.
 }
 
-\examples{
-data(HealthPromotion)
-
-\dontrun{
-}
 
 }
 
