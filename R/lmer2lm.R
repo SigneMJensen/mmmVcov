@@ -1,5 +1,7 @@
 lmer2lm<-function (lmerFit) 
 {
+  require(mgcv,quietly=TRUE)
+  require(Matrix,quietly = TRUE)
   if (inherits(lmerFit, "lmerMod")) {
     yVec <- getME(lmerFit, "y")
     Zmat2 <- getME(lmerFit, "Zt")

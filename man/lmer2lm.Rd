@@ -28,6 +28,18 @@ lmer2lm(modelObject)
 %\note{}
 
 %\seealso{}
+\Examples{
+# Variance-covariance matrix using lmer2lm
+require(nlme, quietly=TRUE)
 
+mSys <- lme(SystolicBP ~ Visit + Gender, random = ~1|ID, data = HealthPromotion, na.action=na.omit)
+mDia <- lme(DiastolicBP ~ Visit + Gender, random = ~1|ID, data = HealthPromotion, na.action=na.omit)
 
+mSyslm<-lmer2lm(mSys)
+mDialm<-lmer2lm(mDia)
+
+# Variance-covariance matrix for the fixed effects for Visit from both models
+m <- mjust(list(mSyslm,mDialm),list("Visit","Visit"))
+m$covar
+}
 

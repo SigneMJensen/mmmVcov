@@ -56,11 +56,17 @@ mjust(modelList, expressions, dataused, level=0.95, seType="san")
 # Example linear mixed models
 require(lme4, quietly=TRUE)
 
-mSys <- lmer(SystolicBP ~ Visit + Gender+(1|ID), data = HealthPromotion)
-mDia <- lmer(DiastolicBP ~ Visit + Gender+ (1|ID), data = HealthPromotion)
+mSys <- lmer(SystolicBP ~ Visit + Gender + I(Age-35) + Ethnicity + 
+               Occupation + BMI + Smoking + HypertensionMed +
+               (1|ID), data = HealthPromotion)
+mDia <- lmer(DiastolicBP ~ Visit + Gender + I(Age-35) + Ethnicity + 
+               Occupation + BMI + Smoking + HypertensionMed +
+               (1|ID), data = HealthPromotion)
 
 # Variance-covariance matrix for the fixed effects for Visit from both models
-m <- mjust(list(mSys,mDia),list("Visit","Visit"), dataused = HealthPromotion)
+m <- mjust(list(mSys,mDia),
+           list("Visit","Visit"), 
+           dataused = HealthPromotion)
 m$covar
 
 # Simultaneous confidence intervals
@@ -69,6 +75,12 @@ require(multcomp, quietly=TRUE)
 beta <- m$coef[,"Estimate"]
 Sigma <- m$covar
 confint(glht(model = parm(beta, Sigma),alternative="two.sided"))$confint
+
+# Variance-covariance matrix for more fixed effects for from both models
+m2 <- mjust(list(mSys,mSys,mSys,mDia,mDia,mDia),
+            list("Visit","GenderMALE","BMI","Visit","GenderMALE","BMI"), 
+            dataused = HealthPromotion)
+m2$covar
 
 
 
