@@ -54,7 +54,7 @@ mjust<-function (modelList,expressions, dataused, level=0.95, seType="san") {
       X<-getME(modelObject,"X")
       Y<-getME(modelObject,"y")
       Z<-getME(modelObject,"Z")
-      A<-getME(modelObject,"A")
+      A<-as.matrix(getME(modelObject,"A"))
       Sigma<-sigma(modelObject)
       R<-diag(Sigma^2,numObsUsed)
       V<-sigma(modelObject)^2*t(A)%*%A+R
@@ -83,7 +83,7 @@ mjust<-function (modelList,expressions, dataused, level=0.95, seType="san") {
         naRepUnits<-as.numeric(setdiff(allRepUnits, repUnitsUsed))
         numInd<-length(repUnitsUsed)
         beta<-fixed.effects(modelObject)
-        X<-extract.lmeDesign(modelObject)$X
+        X<-model.matrix(modelObject,modelObject$data)
         Y<-as.matrix(extract.lmeDesign(modelObject)$y)
         Z<-extract.lmeDesign(modelObject)$Z
         GB<-getVarCov(modelObject)
@@ -116,8 +116,8 @@ mjust<-function (modelList,expressions, dataused, level=0.95, seType="san") {
       }else{
         numObsUsed <- ifelse(inherits(modelObject, "coxph"),
                              modelObject$n, ifelse(inherits(modelObject,"nls"),
-                                                   length(predict(modelObject)),ifelse(inherits(modelObject,"drc"),
-                                                                                       length(predict(modelObject)), nrow(modelObject$model))))
+                             ength(predict(modelObject)),ifelse(inherits(modelObject,"drc"),
+                             length(predict(modelObject)), nrow(modelObject$model))))
         db<-deltab(modelObject,g)
         iidVec0 <- db %*%bread(modelObject) %*% t(estfun(modelObject))
         moNAac <- modelObject$na.action
