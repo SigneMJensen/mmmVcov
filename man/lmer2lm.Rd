@@ -28,7 +28,7 @@ lmer2lm(modelObject)
 %\note{}
 
 %\seealso{}
-\Examples{
+\examples{
 # Variance-covariance matrix using lmer2lm
 require(nlme, quietly=TRUE)
 
