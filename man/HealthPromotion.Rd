@@ -8,16 +8,16 @@
   A data frame with 4605 observations on the following 17 variables.
   \describe{
     \item{\code{ID}}{Subject identifier for the 1365 subjects}
-    \item{\code{Visit}}{}
+    \item{\code{Visit}}{Visit number: 1,...,6}
     \item{\code{Gender}}{Reported as "MALE" or "FEMALE"}
-    \item{\code{Ethnicity}}{"CHINESE", "MALEY","INDIAN","OTHER"}
+    \item{\code{Ethnicity}}{Reported as "CHINESE", "INDIAN", "MALEY" or "OTHER"}
     \item{\code{Age}}{Age at baseline}
-    \item{\code{Occupation}}{Occupation at baseline: "ACADEMIC", "SUPPORT I", "SUPPORT II"}
-    \item{\code{Smoking}}{Smoking category at baseline: "NON-SMOKER","EX-SMOKER","SMOKER"}
-    \item{\code{BMIGroup}}{BMI group at baseline: "NORMAL", "OVERWEIGHT", "OBESE"}
-    \item{\code{HypertensionHist}}{History of hypertension at baseline: "YES" or "NO"}
-    \item{\code{HypertensionMed0}}{Hypertension medicine at baseline: "YES" or "NO"}
-    \item{\code{HypertensionGroup}}{Hypertension group at baseline: "HEALTHY", "AT RISK", "HYPERTENSIVE"}
+    \item{\code{Occupation}}{Occupation at baseline. Reported as "ACADEMIC" (lecturers, professors and post-doctoral staff), "SUPPORT I" (executives and officers) or "SUPPORT II" (administrative staff, technicians and general workers)}
+    \item{\code{Smoking}}{Smoking category at baseline. Reported as "NON-SMOKER","EX-SMOKER" or "SMOKER"}
+    \item{\code{BMIGroup}}{BMI group at baseline. Reported as "NORMAL", "OVERWEIGHT" or "OBESE"}
+    \item{\code{HypertensionHist}}{History of hypertension at baseline. "YES" or "NO"}
+    \item{\code{HypertensionMed0}}{Hypertension medicine at baseline. "YES" or "NO"}
+    \item{\code{HypertensionGroup}}{Hypertension group at baseline. "HEALTHY", "AT RISK", "HYPERTENSIVE"}
     \item{\code{Height}}{Height (m)}
     \item{\code{Weight}}{Weight (kg)}
     \item{\code{BMI}}{BMI (kg/m^2)}
