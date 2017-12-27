@@ -21,7 +21,7 @@ mjust(modelList, expressions, dataused, level=0.95, seType="san")
 \details{
   The function estimates a joint sandwich variance-covariance matrix for all parameters/ derived parameters provided in the expression argument. for details see Pipper et al. 2012 and Jensen et al. 2015.
   Notice: Model objects of class \code{lmerMod} and \code{lme} can have random intercepts and slopes but no nested random effects. For models with several layers of random effects see Ritz et al. 2017. 
-  Model objects of class \code{lme} needs to run on complete data sets.
+  Model objects of class \code{lme} needs to run on complete data sets. Alternatively, use \code{lmer2lm()}.
 }
 
 \value{
@@ -53,6 +53,22 @@ mjust(modelList, expressions, dataused, level=0.95, seType="san")
 %\seealso{}
 
 \examples{
+# Example linear mixed models
+require(lme4, quietly=TRUE)
+
+mSys <- lmer(SystolicBP ~ Visit + Gender+(1|ID), data = HealthPromotion)
+mDia <- lmer(DiastolicBP ~ Visit + Gender+ (1|ID), data = HealthPromotion)
+
+# Variance-covariance matrix for the fixed effects for Visit from both models
+m <- mjust(list(mSys,mDia),list("Visit","Visit"), dataused = HealthPromotion)
+m$covar
+
+# Simultaneous confidence intervals
+require(multcomp, quietly=TRUE)
+
+beta <- m$coef[,"Estimate"]
+Sigma <- m$covar
+confint(glht(model = parm(beta, Sigma),alternative="two.sided"))$confint
 
 
 
