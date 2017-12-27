@@ -1,4 +1,4 @@
-function (lmerFit) 
+lmer2lm<-function (lmerFit) 
 {
   if (inherits(lmerFit, "lmerMod")) {
     yVec <- getME(lmerFit, "y")
