@@ -1,10 +1,13 @@
 Package: mmmVcov
 Type: Package
 Title: Variance-covariance matrix for multiple marginal models
-Version: 0.1.0
+Version: 0.1.1
 Author: Signe M.Jensen and Christian Ritz
 Maintainer: Signe M. Jensen <smj@plen.ku.dk>
 Description: Estimation of the joint variance-covariance matrix for multiple marginal models
+Depends: lme4, drc, nlme
+Imports: sandwich, car, RLRsim, Matrix, mgcv
+Suggests: multcomp
 License: GPL
 Encoding: UTF-8
 LazyData: true

@@ -1,1 +1,12 @@
-exportPattern("^[[:alpha:]]+")
+export(mjust, lmer2lm)
+
+import(drc, lme4, nlme)
+
+importFrom("stats", "D", "coef", "cov2cor", "lm", "model.matrix", 
+           "na.exclude", "pchisq", "predict", "qnorm", "sigma", "vcov")
+importFrom(sandwich, "bread")
+importFrom(sandwich, "estfun")
+importFrom(Matrix, "bdiag")
+importFrom(car, "deltaMethod")
+importFrom(RLRsim, "extract.lmeDesign")
+importFrom(mgcv, "extract.lme.cov2")
