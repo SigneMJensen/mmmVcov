@@ -30,8 +30,6 @@ lmer2lm(modelObject)
 %\seealso{}
 \examples{
 # Variance-covariance matrix using lmer2lm
-require(nlme, quietly=TRUE)
-
 mSys <- lme(SystolicBP ~ Visit + Gender, random = ~1|ID, data = HealthPromotion, na.action=na.omit)
 mDia <- lme(DiastolicBP ~ Visit + Gender, random = ~1|ID, data = HealthPromotion, na.action=na.omit)
 

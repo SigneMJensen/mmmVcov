@@ -54,8 +54,6 @@ mjust(modelList, expressions, dataused, level=0.95, seType="san")
 
 \examples{
 # Example linear mixed models
-require(lme4, quietly=TRUE)
-
 mSys <- lmer(SystolicBP ~ Visit + Gender + I(Age-35) + Ethnicity + 
                Occupation + BMI + Smoking + HypertensionMed +
                (1|ID), data = HealthPromotion)
@@ -70,8 +68,7 @@ m <- mjust(list(mSys,mDia),
 m$covar
 
 # Simultaneous confidence intervals
-require(multcomp, quietly=TRUE)
-
+library(multcomp)
 beta <- m$coef[,"Estimate"]
 Sigma <- m$covar
 confint(glht(model = parm(beta, Sigma),alternative="two.sided"))$confint
@@ -81,9 +78,6 @@ m2 <- mjust(list(mSys,mSys,mSys,mDia,mDia,mDia),
             list("Visit","GenderMALE","BMI","Visit","GenderMALE","BMI"), 
             dataused = HealthPromotion)
 m2$covar
-
-
-
 }
 \keyword{variance-covariance matrix}
 \keyword{linear mixed model}

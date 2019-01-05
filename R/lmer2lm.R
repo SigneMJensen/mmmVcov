@@ -1,31 +1,27 @@
-lmer2lm<-function (lmerFit) 
-{
-  require(mgcv,quietly=TRUE)
-  require(Matrix,quietly = TRUE)
-  if (inherits(lmerFit, "lmerMod")) {
-    yVec <- getME(lmerFit, "y")
-    Zmat2 <- getME(lmerFit, "Zt")
+lmer2lm <- function (modelObject){
+  if (inherits(modelObject, "lmerMod")){
+    yVec <- getME(modelObject, "y")
+    Zmat2 <- getME(modelObject, "Zt")
     Vinv2 <- Reduce("+", mapply(function(x, y) {
       x * (y^2)
-    }, lapply(getME(lmerFit, "Ztlist"), function(x) {
+    }, lapply(getME(modelObject, "Ztlist"), function(x) {
       t(x) %*% x
-    }), lapply(VarCorr(lmerFit), function(x) {
+    }), lapply(VarCorr(modelObject), function(x) {
       attr(x, "stddev")
-    }))) + diag(attr(VarCorr(lmerFit), "sc")^2, length(yVec))
-    Xmat2 <- getME(lmerFit, "X")
-    naRows <- attr(lmerFit@frame, "na.action")
+    }))) + diag(attr(VarCorr(modelObject), "sc")^2, length(yVec))
+    Xmat2 <- getME(modelObject, "X")
+    naRows <- attr(modelObject@frame, "na.action")
   }
-  if (inherits(lmerFit, "lme")) {
-    yVec <- getResponse(lmerFit)
-    fullData <- as.data.frame(lmerFit[["data"]])
-    if (inherits(lmerFit, "glmmPQL")) {
+  if (inherits(modelObject, "lme")){
+    yVec <- getResponse(modelObject)
+    fullData <- as.data.frame(modelObject[["data"]])
+    if (inherits(modelObject, "glmmPQL")){
       ncolFD <- ncol(fullData)
-      fullData <- fullData[, -c(ncolFD, ncolFD - 1, ncolFD - 
-                                  2)]
+      fullData <- fullData[, -c(ncolFD, ncolFD - 1, ncolFD - 2)]
     }
-    Vinv2 <- bdiag((extract.lme.cov2(lmerFit, fullData))[["V"]])
-    Xmat2 <- model.matrix(lmerFit, fullData)
-    naRows <- as.vector(lmerFit[["na.action"]])
+    Vinv2 <- bdiag((extract.lme.cov2(modelObject, fullData))[["V"]])
+    Xmat2 <- model.matrix(modelObject, fullData)
+    naRows <- as.vector(modelObject[["na.action"]])
   }
   Vsqrt2 <- solve(chol(Vinv2))
   totalRows <- length(yVec) + length(naRows)
