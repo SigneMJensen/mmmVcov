@@ -5,6 +5,7 @@ Version: 0.1.0
 Author: Signe M.Jensen and Christian Ritz
 Maintainer: Signe M. Jensen <smj@plen.ku.dk>
 Description: Estimation of the joint variance-covariance matrix for multiple marginal models
-License: GPL
+License: GPL-2
+Imports: Imports: car, sandwich, RLRsim, Matrix
 Encoding: UTF-8
 LazyData: true

@@ -1,1 +1,6 @@
-exportPattern("^[[:alpha:]]+")
+import(RLRsim)
+import(sandwich)
+import(car)
+import(Matrix)
+
+export(lmer2lm, mjust)
